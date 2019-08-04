@@ -3,7 +3,48 @@
 <div class="container">
   <div class="container">
     <p style="color: black">result is : {{ v }}</p>
-  </div>
-</div>
+    <table class="table table-dark">
+      <th>Table of things</th>
+      <tr scope="col">
+        {% if proba < 0.2 %}
+        <td>Loan: credit score : {{ proba * 100 }}</td>
+        <td>No loan</td>
+        {% elif proba < 0.3 %}
+        <td>Loan: credit score : {{ proba * 100 }}</td>
+        <td>Recommended interest rate: 14%</td>
+        {% elif proba < 0.4 %}
+        <td>Loan: credit score : {{ proba * 100 }}</td>
+        <td>Recommended interest rate: 10%</td>
+        {% elif proba < 0.5 %}
+        <td>Loan: credit score : {{ proba * 100 }}</td>
+        <td>Recommended interest rate: 7%</td>
+        {% elif proba > 0.5 %}
+        <td>Loan: credit score : {{ proba * 100 }}</td>
+        <td>Recommended interest rate: 5%</td>
+        {% endif %}
+      </tr>
+    </table>
 
-{% endblock%}
+    <div class="container">
+      <img src="{{url_for('static', filename='images/matumbi.jpg')}}" alt="" />
+    </div>
+    {% if proba <= 0.2%}
+
+    {% else %}
+    {% for i in range(2) %}
+    <div
+      class="container"
+      style="display: flex; justify-content: space-between;"
+    ></div>
+    <div class="card">{{bank[i]}}</div>
+    <div class="card">{{loa[i]}}</div>
+    <div class="card">{{interest[i]}}</div>
+    <div class="card">{{maxi[i]}}</div>
+    </div>
+    
+    {% endfor %}
+    {% endif %}
+  </div>
+
+  {% endblock%}
+</div>
